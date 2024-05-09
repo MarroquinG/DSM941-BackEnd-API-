@@ -21,6 +21,7 @@ public class UsuarioController {
         return usuarioServicio.getAllUsuarios();
     }
 
+
     @GetMapping("/FindByCorreo/{correo}")
     public ResponseEntity<UsuarioModel> getUsuarioByCorreo(@PathVariable("correo") String correo) {
         Optional<UsuarioModel> usuarioOptional = usuarioServicio.getUsuarioByCorreo(correo);
