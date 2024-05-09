@@ -21,7 +21,19 @@ public class UsuarioController {
         return usuarioServicio.getAllUsuarios();
     }
 
+    @GetMapping("/FindByCorreo/{correo}")
+    public ResponseEntity<UsuarioModel> getUsuarioByCorreo(@PathVariable("correo") String correo) {
+        Optional<UsuarioModel> usuarioOptional = usuarioServicio.getUsuarioByCorreo(correo);
+        return usuarioOptional.map(usuario -> new ResponseEntity<>(usuario, HttpStatus.OK))
+                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
 
+    @GetMapping("/Find/{id}")
+    public ResponseEntity<UsuarioModel> getUsuarioById(@PathVariable("id") Long id) {
+        Optional<UsuarioModel> usuarioOptional = usuarioServicio.getUsuarioById(id);
+        return usuarioOptional.map(usuario -> new ResponseEntity<>(usuario, HttpStatus.OK))
+                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
 
     @PostMapping("/Save")
     public ResponseEntity<UsuarioModel> guardarUsuario(@RequestBody UsuarioModel usuario) {
