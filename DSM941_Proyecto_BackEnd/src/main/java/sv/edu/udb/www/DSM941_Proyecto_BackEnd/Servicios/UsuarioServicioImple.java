@@ -25,8 +25,8 @@ public class UsuarioServicioImple implements UsuarioServicio{
     }
 
     @Override
-    public Optional<UsuarioModel> getUsuarioByCorreo(String Correo) {
-        return usuarioRepositorio.findByUsuarioByCorreo(Correo);
+    public Optional<UsuarioModel> getUsuarioByCorreo(String Correo, String Contra) {
+        return usuarioRepositorio.findByUsuarioByCorreo(Correo,Contra);
     }
 
     @Override

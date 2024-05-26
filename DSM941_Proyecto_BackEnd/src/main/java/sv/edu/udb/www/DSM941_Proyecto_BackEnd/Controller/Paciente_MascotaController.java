@@ -30,4 +30,14 @@ public class Paciente_MascotaController {
         Paciente_MascotaModel nuevoPacienteMascota = pacienteMascotaServicio.GuardarPaciente_Mascota(Paciente_Mascota);
         return new ResponseEntity<>(nuevoPacienteMascota, HttpStatus.CREATED);
     }
+
+    @PutMapping("/Update/{id}")
+    public ResponseEntity<Paciente_MascotaModel> actualizarPaciente(@PathVariable("id") Long id, @RequestBody Paciente_MascotaModel paciente) {
+        Paciente_MascotaModel pacienteActualizado = pacienteMascotaServicio.ActualizarPaciente_Mascota(id, paciente);
+        if (pacienteActualizado != null) {
+            return new ResponseEntity<>(pacienteActualizado, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 }

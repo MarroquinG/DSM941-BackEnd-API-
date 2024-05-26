@@ -12,7 +12,7 @@ public interface UsuarioRepositorio extends CrudRepository<UsuarioModel, Long> {
     @Query("SELECT u FROM UsuarioModel u WHERE u.tipoUsuario.id = :tipoUsuarioId")
     ArrayList<UsuarioModel> findByTipoUsuarioIdAndId(Long tipoUsuarioId);
 
-    @Query("SELECT u FROM UsuarioModel u WHERE u.Correo = :correo")
-    Optional<UsuarioModel> findByUsuarioByCorreo(String correo);
+    @Query("SELECT u FROM UsuarioModel u WHERE u.Correo = :correo and u.Pass = :contra")
+    Optional<UsuarioModel> findByUsuarioByCorreo(String correo,String contra);
 }
 

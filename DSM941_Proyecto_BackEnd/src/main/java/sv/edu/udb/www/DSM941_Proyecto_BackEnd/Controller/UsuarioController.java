@@ -22,9 +22,9 @@ public class UsuarioController {
     }
 
 
-    @GetMapping("/FindByCorreo/{correo}")
-    public ResponseEntity<UsuarioModel> getUsuarioByCorreo(@PathVariable("correo") String correo) {
-        Optional<UsuarioModel> usuarioOptional = usuarioServicio.getUsuarioByCorreo(correo);
+    @GetMapping("/FindByCorreo/{correo}/{contra}")
+    public ResponseEntity<UsuarioModel> getUsuarioByCorreo(@PathVariable("correo") String correo,@PathVariable("contra") String contra) {
+        Optional<UsuarioModel> usuarioOptional = usuarioServicio.getUsuarioByCorreo(correo,contra);
         return usuarioOptional.map(usuario -> new ResponseEntity<>(usuario, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
@@ -40,6 +40,29 @@ public class UsuarioController {
     public ResponseEntity<UsuarioModel> guardarUsuario(@RequestBody UsuarioModel usuario) {
         UsuarioModel nuevoUsuario = usuarioServicio.guardarUsuario(usuario);
         return new ResponseEntity<>(nuevoUsuario, HttpStatus.CREATED);
+    }
+
+    @PutMapping("/Update/{id}")
+    public ResponseEntity<UsuarioModel> actualizarUsuario(@PathVariable("id") Long id,
+                                                          @RequestBody UsuarioModel usuario) {
+        UsuarioModel usuarioActualizado = usuarioServicio.actualizarUsuario(id, usuario);
+        return usuarioActualizado != null ?
+                new ResponseEntity<>(usuarioActualizado, HttpStatus.OK) :
+                new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @DeleteMapping("/Delete/{id}")
+    public ResponseEntity<String> desactivarUsuario(@PathVariable("id") Long id) {
+        return usuarioServicio.desactivarUsuario(id) ?
+                new ResponseEntity<>("Usuario desactivado correctamente", HttpStatus.OK) :
+                new ResponseEntity<>("No se pudo desactivar el usuario", HttpStatus.NOT_FOUND);
+    }
+
+
+    @GetMapping("/All/{id}")
+    public ResponseEntity<ArrayList<UsuarioModel>> getDoctoresById(@PathVariable("id") Long id) {
+        ArrayList<UsuarioModel> doctores = usuarioServicio.getDoctoresById(id);
+        return new ResponseEntity<>(doctores, HttpStatus.OK);
     }
 
 }
