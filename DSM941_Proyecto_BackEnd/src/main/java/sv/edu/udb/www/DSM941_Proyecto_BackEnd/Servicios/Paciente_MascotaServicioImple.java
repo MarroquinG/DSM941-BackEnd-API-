@@ -31,7 +31,7 @@ public class Paciente_MascotaServicioImple implements Paciente_MascotaServicio {
         return paciente_MascotaRepositorio.save(a);
     }
 
-    @Override
+   /* @Override
     public boolean EliminarPaciente_Mascota(Long id) {
         try {
             Optional<Paciente_MascotaModel> a = getPaciente_MascotaById(id);
@@ -40,7 +40,7 @@ public class Paciente_MascotaServicioImple implements Paciente_MascotaServicio {
         }catch (Exception e){
             return  false;
         }
-    }
+    }*/
 
 
     @Override
