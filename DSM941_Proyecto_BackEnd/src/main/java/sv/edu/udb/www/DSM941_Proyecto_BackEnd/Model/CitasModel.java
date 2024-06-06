@@ -13,6 +13,7 @@ public class CitasModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    /** Fecha esta aqui**/
     @Column(name = "fecha")
     private Date fecha;
 
@@ -24,6 +25,8 @@ public class CitasModel {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_Paciente_Mascota")
     private Paciente_MascotaModel paciente;
+
+
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_Estado_Cita ")
