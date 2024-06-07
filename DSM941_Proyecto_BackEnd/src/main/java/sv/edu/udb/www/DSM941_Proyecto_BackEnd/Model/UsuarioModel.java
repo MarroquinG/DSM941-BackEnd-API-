@@ -12,6 +12,8 @@ public class UsuarioModel {
     private Long id;
     private String Nombres;
     private String Apellidos;
+
+    private Long Genero;
     private String Correo;
     private String Pass;
 
@@ -30,12 +32,13 @@ public class UsuarioModel {
         this.id = id;
     }
 
-    public UsuarioModel(Long id, String nombres, String apellidos, String correo, String pass, TipoUsuarioModel tipoUsuario, Long estatus) {
+    public UsuarioModel(Long id, String nombres, String apellidos, String correo, String pass, Long genero,TipoUsuarioModel tipoUsuario, Long estatus) {
         this.id = id;
         Nombres = nombres;
         Apellidos = apellidos;
         Correo = correo;
         Pass = pass;
+        Genero = genero;
         this.tipoUsuario = tipoUsuario;
         Estatus = estatus;
     }
@@ -81,6 +84,14 @@ public class UsuarioModel {
 
     public void setPass(String pass) {
         Pass = pass;
+    }
+
+    public Long getGenero() {
+        return Genero;
+    }
+
+    public void setGenero(Long genero) {
+        Genero = genero;
     }
 
     public TipoUsuarioModel getTipoUsuario() {
