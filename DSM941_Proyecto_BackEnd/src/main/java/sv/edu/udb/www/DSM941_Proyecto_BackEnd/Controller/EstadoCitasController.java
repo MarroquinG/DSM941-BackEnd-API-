@@ -30,15 +30,7 @@ public class EstadoCitasController {
         return estadoCitaServicio.GuardarEstadoCita(a);
     }
 
-    @DeleteMapping("/Delete/{id}")
-    public String EliminarEstadoCita(@PathVariable("id") long id ){
-        if (estadoCitaServicio.EliminarEstadoCita(id)){
-            return "Se desactivo correctamente el estado de la cita";
-
-        }else {
-            return "No se puede desactivar el estado de la cita";
-        }
-    }
+  
 
     @PutMapping("/Update/{id}")
     public ResponseEntity<EstadoCitasModel> actualizarEstadoCita(@PathVariable("id") Long id, @RequestBody EstadoCitasModel estadoCita) {

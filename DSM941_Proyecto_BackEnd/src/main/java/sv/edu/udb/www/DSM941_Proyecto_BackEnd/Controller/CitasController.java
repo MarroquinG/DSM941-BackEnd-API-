@@ -69,12 +69,22 @@ public class CitasController {
                 new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    /**ELIMINAR CITA**/
-    @DeleteMapping("/Delete/{id}")
-    public ResponseEntity<String> desactivarCita(@PathVariable("id") Long id) {
-        return citaServicio.desactivarCita(id) ?
-                new ResponseEntity<>("Cita desactivada correctamente", HttpStatus.OK) :
-                new ResponseEntity<>("No se puede desactivar la cita", HttpStatus.NOT_FOUND);
+    /**DESACTIVAR CITA**/
+    @PutMapping("/DesactivarCita/{id}")
+    public ResponseEntity<CitasModel> desactivarUsuario(@PathVariable("id") Long id) {
+        try {
+            Optional<CitasModel> citaDesactivar = citaServicio.getCitaById(id);
+            if (citaDesactivar.isPresent()) {
+                CitasModel cita = citaDesactivar.get();
+                cita.setEstatus(0L);
+                CitasModel citaDesactivada = citaServicio.actualizarCita(id,cita);
+                return new ResponseEntity<>(citaDesactivada, HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
 }

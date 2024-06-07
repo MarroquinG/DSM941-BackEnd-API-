@@ -15,6 +15,7 @@ public class Encargado_MascotaModel {
     private String 	Edad;
     private String 	Ciudad;
     private String 	Direccion;
+    private Long Estatus;
 
 
     public Encargado_MascotaModel() {
@@ -24,7 +25,7 @@ public class Encargado_MascotaModel {
         this.id = id;
     }
 
-    public Encargado_MascotaModel(Long id, String nombres, String apellidos, String dui, String edad, String ciudad, String direccion) {
+    public Encargado_MascotaModel(Long id, String nombres, String apellidos, String dui, String edad, String ciudad, String direccion, Long estatus) {
         this.id = id;
         Nombres = nombres;
         Apellidos = apellidos;
@@ -32,6 +33,7 @@ public class Encargado_MascotaModel {
         Edad = edad;
         Ciudad = ciudad;
         Direccion = direccion;
+        Estatus = estatus;
     }
 
     public Long getId() {
@@ -88,5 +90,13 @@ public class Encargado_MascotaModel {
 
     public void setDireccion(String direccion) {
         Direccion = direccion;
+    }
+
+    public Long getEstatus() {
+        return Estatus;
+    }
+
+    public void setEstatus(Long estatus) {
+        Estatus = estatus;
     }
 }

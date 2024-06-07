@@ -10,7 +10,6 @@ public interface Encargado_MascotaServicio {
     ArrayList<Encargado_MascotaModel> getAllEncargado_Mascota();
     Optional<Encargado_MascotaModel> getEncargado_MascotaById(Long id);
     Encargado_MascotaModel GuardarEncargado_Mascota(Encargado_MascotaModel a);
-    boolean EliminarEncargado_Mascota(Long id);
 
     Encargado_MascotaModel ActualizarEncargado_Mascota(Long id, Encargado_MascotaModel encargado_Mascota);
 }

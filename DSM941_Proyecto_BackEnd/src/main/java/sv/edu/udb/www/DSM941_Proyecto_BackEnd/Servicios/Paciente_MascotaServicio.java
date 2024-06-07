@@ -14,7 +14,6 @@ public interface Paciente_MascotaServicio {
     ArrayList<Paciente_MascotaModel> getAllPacienteMascota();
     Optional<Paciente_MascotaModel> getPaciente_MascotaById(Long id);
     Paciente_MascotaModel GuardarPaciente_Mascota(Paciente_MascotaModel a);
-   /** boolean EliminarPaciente_Mascota(Long id);**/
 
     Paciente_MascotaModel ActualizarPaciente_Mascota(Long id, Paciente_MascotaModel pacienteMascota);
 }

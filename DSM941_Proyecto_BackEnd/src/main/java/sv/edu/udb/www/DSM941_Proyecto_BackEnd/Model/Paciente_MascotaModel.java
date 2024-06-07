@@ -21,6 +21,8 @@ public class Paciente_MascotaModel {
 
     private Date Fecha_nacimiento;
 
+    private Long Estatus;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_Encargado_Mascota")
     private Encargado_MascotaModel encargadoMascota ;
@@ -33,12 +35,13 @@ public class Paciente_MascotaModel {
         this.id = id;
     }
 
-    public Paciente_MascotaModel(Long id, String nombre, String edad, String raza, Date fecha_nacimiento, Encargado_MascotaModel encargadoMascota) {
+    public Paciente_MascotaModel(Long id, String nombre, String edad, String raza, Date fecha_nacimiento, Long estatus, Encargado_MascotaModel encargadoMascota) {
         this.id = id;
         Nombre = nombre;
         Edad = edad;
         Raza = raza;
         Fecha_nacimiento = fecha_nacimiento;
+        Estatus = estatus;
         this.encargadoMascota = encargadoMascota;
     }
 
@@ -80,6 +83,14 @@ public class Paciente_MascotaModel {
 
     public void setFecha_nacimiento(Date fecha_nacimiento) {
         Fecha_nacimiento = fecha_nacimiento;
+    }
+
+    public Long getEstatus() {
+        return Estatus;
+    }
+
+    public void setEstatus(Long estatus) {
+        Estatus = estatus;
     }
 
     public Encargado_MascotaModel getEncargadoMascota() {

@@ -18,7 +18,7 @@ public class Paciente_MascotaServicioImple implements Paciente_MascotaServicio {
 
     @Override
     public ArrayList<Paciente_MascotaModel> getAllPacienteMascota() {
-        return (ArrayList<Paciente_MascotaModel>) paciente_MascotaRepositorio.findAll();
+        return (ArrayList<Paciente_MascotaModel>) paciente_MascotaRepositorio.allPacienteMascota();
     }
 
     @Override
@@ -30,17 +30,6 @@ public class Paciente_MascotaServicioImple implements Paciente_MascotaServicio {
     public Paciente_MascotaModel GuardarPaciente_Mascota(Paciente_MascotaModel a) {
         return paciente_MascotaRepositorio.save(a);
     }
-
-   /* @Override
-    public boolean EliminarPaciente_Mascota(Long id) {
-        try {
-            Optional<Paciente_MascotaModel> a = getPaciente_MascotaById(id);
-
-            return true;
-        }catch (Exception e){
-            return  false;
-        }
-    }*/
 
 
     @Override

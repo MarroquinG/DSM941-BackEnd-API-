@@ -18,6 +18,8 @@ public class CitasModel {
     private Date fecha;
 
     private Time hora;
+
+    private Long Estatus;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_Usuario")
     private UsuarioModel usuario;
@@ -25,8 +27,6 @@ public class CitasModel {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_Paciente_Mascota")
     private Paciente_MascotaModel paciente;
-
-
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_Estado_Cita ")
@@ -43,14 +43,16 @@ public class CitasModel {
         this.id = id;
     }
 
-    public CitasModel(Long id, Date fecha, Time hora, UsuarioModel usuario, Paciente_MascotaModel paciente, EstadoCitasModel estadoCita) {
+    public CitasModel(Long id, Date fecha, Time hora, Long estatus, UsuarioModel usuario, Paciente_MascotaModel paciente, EstadoCitasModel estadoCita) {
         this.id = id;
         this.fecha = fecha;
         this.hora = hora;
+        Estatus = estatus;
         this.usuario = usuario;
         this.paciente = paciente;
         this.estadoCita = estadoCita;
     }
+
 //-----------------------------------------------------------------------------------------------------------------------------
 //---------------------------------------------------------SET AND GET -------------------------------------------------------
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -77,6 +79,14 @@ public class CitasModel {
 
     public void setHora(Time hora) {
         this.hora = hora;
+    }
+
+    public Long getEstatus() {
+        return Estatus;
+    }
+
+    public void setEstatus(Long estatus) {
+        Estatus = estatus;
     }
 
     public UsuarioModel getUsuario() {

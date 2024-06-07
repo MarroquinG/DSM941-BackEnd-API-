@@ -17,7 +17,7 @@ public class Encargado_MascotaServicioImple  implements Encargado_MascotaServici
     Encargado_MascotaRepositorio encargado_MascotaRepositorio ;
     @Override
     public ArrayList<Encargado_MascotaModel> getAllEncargado_Mascota() {
-        return (ArrayList<Encargado_MascotaModel>) encargado_MascotaRepositorio.findAll();
+        return (ArrayList<Encargado_MascotaModel>) encargado_MascotaRepositorio.allEncargadosMascota();
     }
 
     @Override
@@ -30,16 +30,6 @@ public class Encargado_MascotaServicioImple  implements Encargado_MascotaServici
         return encargado_MascotaRepositorio.save(a);
     }
 
-    @Override
-    public boolean EliminarEncargado_Mascota(Long id) {
-        try {
-            Optional<Encargado_MascotaModel> a = getEncargado_MascotaById(id);
-
-            return true;
-        }catch (Exception e){
-            return  false;
-        }
-    }
 
     @Override
     public Encargado_MascotaModel ActualizarEncargado_Mascota(Long id, Encargado_MascotaModel encargado_Mascota) {

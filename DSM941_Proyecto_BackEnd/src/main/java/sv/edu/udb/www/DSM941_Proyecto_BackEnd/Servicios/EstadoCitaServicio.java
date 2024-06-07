@@ -9,7 +9,7 @@ public interface EstadoCitaServicio {
     ArrayList<EstadoCitasModel> getAllEstadoCita();
     Optional<EstadoCitasModel> getEstadoCitaById(Long id);
     EstadoCitasModel GuardarEstadoCita(EstadoCitasModel a);
-    boolean EliminarEstadoCita(Long id);
+
 
     EstadoCitasModel ActualizarEstadoCita(Long id, EstadoCitasModel estadoCita);
 }

@@ -23,14 +23,12 @@ public class UsuarioController {
         return usuarioServicio.getAllUsuarios();
     }
 
-    /**Todos los doctores**/
-    @GetMapping("/AllDoctores")
-    public ResponseEntity<ArrayList<UsuarioModel>> getDoctoresById() {
-        long id =2;
+    /**Todos los doctores Activos**/
+    @GetMapping("/AllDoctores/{id}")
+    public ResponseEntity<ArrayList<UsuarioModel>> getDoctoresById(@PathVariable("id") Long id) {
         ArrayList<UsuarioModel> doctores = usuarioServicio.getDoctoresById(id);
         return new ResponseEntity<>(doctores, HttpStatus.OK);
     }
-
     /**Verificar Login**/
     @GetMapping("/FindByCorreo/{correo}/{contra}")
     public ResponseEntity<UsuarioModel> getUsuarioByCorreo(@PathVariable("correo") String correo,@PathVariable("contra") String contra) {
@@ -39,7 +37,7 @@ public class UsuarioController {
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    /**Obtener Usuario Especifico **/
+    /**Obtener Usuario Especifico**/
     @GetMapping("/Find/{id}")
     public ResponseEntity<UsuarioModel> getUsuarioById(@PathVariable("id") Long id) {
         Optional<UsuarioModel> usuarioOptional = usuarioServicio.getUsuarioById(id);
@@ -64,14 +62,23 @@ public class UsuarioController {
                 new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    /**Borrar Usuario**/
-    @DeleteMapping("/Delete/{id}")
-    public ResponseEntity<String> desactivarUsuario(@PathVariable("id") Long id) {
-        return usuarioServicio.desactivarUsuario(id) ?
-                new ResponseEntity<>("Usuario desactivado correctamente", HttpStatus.OK) :
-                new ResponseEntity<>("No se pudo desactivar el usuario", HttpStatus.NOT_FOUND);
+    /**Desactivar Usuario**/
+    @PutMapping("/DesactivarUsuario/{id}")
+    public ResponseEntity<UsuarioModel> desactivarUsuario(@PathVariable("id") Long id) {
+        try {
+            Optional<UsuarioModel> usuarioDesactivar = usuarioServicio.getUsuarioById(id);
+            if (usuarioDesactivar.isPresent()) {
+                UsuarioModel usuario = usuarioDesactivar.get();
+                usuario.setEstatus(0L);
+                UsuarioModel usuarioActualizado = usuarioServicio.actualizarUsuario(id,usuario);
+                return new ResponseEntity<>(usuarioActualizado, HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
-
 
 
 

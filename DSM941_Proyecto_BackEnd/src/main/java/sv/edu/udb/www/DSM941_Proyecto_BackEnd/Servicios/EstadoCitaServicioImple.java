@@ -30,18 +30,7 @@ public class EstadoCitaServicioImple implements EstadoCitaServicio{
         return estadoCitaRepositorio.save(a);
     }
 
-    @Override
-    public boolean EliminarEstadoCita(Long id) {
-        try {
-            Optional<EstadoCitasModel> estadoCitaOptional = getEstadoCitaById(id);
-            EstadoCitasModel estadoCita = estadoCitaOptional.get();
-            estadoCita.setStatus(Long.valueOf(0));
-            estadoCitaRepositorio.save(estadoCita);
-            return true;
-        }catch (Exception e){
-            return  false;
-        }
-    }
+
     @Override
     public EstadoCitasModel ActualizarEstadoCita(Long id, EstadoCitasModel estadoCita) {
         Optional<EstadoCitasModel> estadoCitaOptional = estadoCitaRepositorio.findById(id);

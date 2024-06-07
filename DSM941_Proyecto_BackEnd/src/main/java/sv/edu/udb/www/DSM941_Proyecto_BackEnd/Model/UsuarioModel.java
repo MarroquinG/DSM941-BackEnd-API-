@@ -13,7 +13,7 @@ public class UsuarioModel {
     private String Nombres;
     private String Apellidos;
 
-    private Long Genero;
+    private String Genero;
     private String Correo;
     private String Pass;
 
@@ -32,7 +32,7 @@ public class UsuarioModel {
         this.id = id;
     }
 
-    public UsuarioModel(Long id, String nombres, String apellidos, String correo, String pass, Long genero,TipoUsuarioModel tipoUsuario, Long estatus) {
+    public UsuarioModel(Long id, String nombres, String apellidos, String correo, String pass, String genero,TipoUsuarioModel tipoUsuario, Long estatus) {
         this.id = id;
         Nombres = nombres;
         Apellidos = apellidos;
@@ -86,11 +86,11 @@ public class UsuarioModel {
         Pass = pass;
     }
 
-    public Long getGenero() {
+    public String getGenero() {
         return Genero;
     }
 
-    public void setGenero(Long genero) {
+    public void setGenero(String genero) {
         Genero = genero;
     }
 
