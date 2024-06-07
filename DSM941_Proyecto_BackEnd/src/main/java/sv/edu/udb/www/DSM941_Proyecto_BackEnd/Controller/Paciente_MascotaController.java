@@ -18,10 +18,18 @@ import java.util.Optional;
 public class Paciente_MascotaController {
     @Autowired
     Paciente_MascotaServicio pacienteMascotaServicio;
-    /**MOSTRAR PACIENTES MASCOTAS**/
+    /**MOSTRAR PACIENTES MASCOTAS ACTIVAS**/
     @GetMapping("/All")
     public ArrayList<Paciente_MascotaModel> getAllPacienteMascota() {
         return pacienteMascotaServicio.getAllPacienteMascota();
+    }
+
+    /**OBTENER PACIENTE MASCOTA POR ID**/
+    @GetMapping("/Find/{id}")
+    public ResponseEntity<Paciente_MascotaModel> get(@PathVariable("id") Long id) {
+        Optional<Paciente_MascotaModel> pacienteOptional = pacienteMascotaServicio.getPaciente_MascotaById(id);
+        return pacienteOptional.map(pacienteMascota -> new ResponseEntity<>(pacienteMascota, HttpStatus.OK))
+                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     /**GUARDAR NUEVO PACIENTE MASCOTA**/
@@ -42,7 +50,7 @@ public class Paciente_MascotaController {
     }
 
 /**DESACTIVAR PACIENTE MASCOTA**/
-    @PutMapping("/DesactivarUsuario/{id}")
+    @PutMapping("/DesactivarPacienteMascota/{id}")
     public ResponseEntity<Paciente_MascotaModel> desactivarPacienteMascota(@PathVariable("id") Long id) {
         try {
             Optional<Paciente_MascotaModel> pacienteMascotaDesactivar = pacienteMascotaServicio.getPaciente_MascotaById(id);

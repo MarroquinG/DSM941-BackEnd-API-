@@ -46,7 +46,7 @@ public class Encargado_MascotaController {
     }
 
     /**DESACTIVAR ENCARGADO MASCOTA**/
-    @PutMapping("/DesactivarUsuario/{id}")
+    @PutMapping("/DesactivarEncargadoMascota/{id}")
     public ResponseEntity<Encargado_MascotaModel> desactivarEncargadoMascota(@PathVariable("id") Long id) {
         try {
             Optional<Encargado_MascotaModel> encargadoMascotaDesactivar = encargado_MascotaServicio.getEncargado_MascotaById(id);

@@ -23,7 +23,7 @@ public class Paciente_MascotaServicioImple implements Paciente_MascotaServicio {
 
     @Override
     public Optional<Paciente_MascotaModel> getPaciente_MascotaById(Long id) {
-        return paciente_MascotaRepositorio.findById(id);
+        return paciente_MascotaRepositorio.pacienteMascotabyId(id);
     }
 
     @Override
