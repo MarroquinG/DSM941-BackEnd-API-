@@ -30,7 +30,7 @@ public class EstadoCitasController {
         return estadoCitaServicio.GuardarEstadoCita(a);
     }
 
-  
+
 
     @PutMapping("/Update/{id}")
     public ResponseEntity<EstadoCitasModel> actualizarEstadoCita(@PathVariable("id") Long id, @RequestBody EstadoCitasModel estadoCita) {

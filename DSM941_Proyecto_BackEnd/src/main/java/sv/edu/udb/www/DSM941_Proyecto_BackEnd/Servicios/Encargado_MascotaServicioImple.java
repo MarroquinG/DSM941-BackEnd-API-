@@ -22,7 +22,7 @@ public class Encargado_MascotaServicioImple  implements Encargado_MascotaServici
 
     @Override
     public Optional<Encargado_MascotaModel> getEncargado_MascotaById(Long id) {
-        return encargado_MascotaRepositorio.findById(id);
+        return encargado_MascotaRepositorio.encargadoMascotaById(id);
     }
 
     @Override
