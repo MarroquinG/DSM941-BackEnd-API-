@@ -46,7 +46,6 @@ public class TipoUsuarioServicioImple  implements TipoUsuarioServicio {
         if (tipoUsuarioOptional.isPresent()) {
             TipoUsuarioModel tipoUsuarioExistente = tipoUsuarioOptional.get();
             tipoUsuarioExistente.setNombre_Tipo_Usuario(tipoUsuario.getNombre_Tipo_Usuario());
-            tipoUsuarioExistente.setEstatus(tipoUsuario.getEstatus());
             return tipoUsuarioRepositorio.save(tipoUsuarioExistente);
         }
         return null;

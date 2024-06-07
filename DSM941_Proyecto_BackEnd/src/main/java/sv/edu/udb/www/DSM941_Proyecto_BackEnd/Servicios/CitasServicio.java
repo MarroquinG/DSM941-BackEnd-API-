@@ -13,7 +13,7 @@ public interface CitasServicio {
     CitasModel actualizarCita(Long id, CitasModel cita);
     boolean desactivarCita(Long id);
 
-    ArrayList<CitasModel> findAllCitasByDoctor(Long id);
+    ArrayList<CitasModel> findAllCitasByDoctor(Long id, Long idE);
 
     ArrayList<CitasModel> findAllCitasByDoctor_Pendientes(Long id);
 

@@ -11,7 +11,7 @@ public class TipoUsuarioModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String 	Nombre_Tipo_Usuario;
-    private Long Estatus;
+
 
     public TipoUsuarioModel() {
 
@@ -20,10 +20,10 @@ public class TipoUsuarioModel {
         this.id = id;
     }
 
-    public TipoUsuarioModel(Long id, String nombre_Tipo_Usuario, Long estatus) {
+    public TipoUsuarioModel(Long id, String nombre_Tipo_Usuario) {
         this.id = id;
         Nombre_Tipo_Usuario = nombre_Tipo_Usuario;
-        Estatus = estatus;
+
     }
 
 
@@ -44,11 +44,5 @@ public class TipoUsuarioModel {
         Nombre_Tipo_Usuario = nombre_Tipo_Usuario;
     }
 
-    public Long getEstatus() {
-        return Estatus;
-    }
 
-    public void setEstatus(Long estatus) {
-        Estatus = estatus;
-    }
 }

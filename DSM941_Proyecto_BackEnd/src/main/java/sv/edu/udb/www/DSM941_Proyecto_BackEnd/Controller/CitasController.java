@@ -24,10 +24,13 @@ public class CitasController {
         ArrayList<CitasModel> citas = citaServicio.getAllCitas();
         return new ResponseEntity<>(citas, HttpStatus.OK);
     }
+
+
     /**CITAS POR DOCTOR**/
-    @GetMapping("/All_Citas_Doctor/{id}")
-    public ResponseEntity<ArrayList<CitasModel>> getAllCitas_Doctor(@PathVariable("id") Long id) {
-        ArrayList<CitasModel> citas2 = citaServicio.findAllCitasByDoctor(id);
+    @GetMapping("/All_Citas_Doctor/{id}/{idE}")
+    public ResponseEntity<ArrayList<CitasModel>> getAllCitas_Doctor(@PathVariable("id") Long id,
+                                                                    @PathVariable("idE") Long idE) {
+        ArrayList<CitasModel> citas2 = citaServicio.findAllCitasByDoctor(id,idE);
         return new ResponseEntity<>(citas2, HttpStatus.OK);
     }
 

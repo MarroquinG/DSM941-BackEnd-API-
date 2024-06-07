@@ -37,7 +37,6 @@ public class EstadoCitaServicioImple implements EstadoCitaServicio{
         if (estadoCitaOptional.isPresent()) {
             EstadoCitasModel estadoCitaExistente = estadoCitaOptional.get();
             estadoCitaExistente.setNombre_Estado_Cita(estadoCita.getNombre_Estado_Cita());
-            estadoCitaExistente.setStatus(estadoCita.getStatus());
             return estadoCitaRepositorio.save(estadoCitaExistente);
         }
         return null; // o puedes lanzar una excepción si lo prefieres

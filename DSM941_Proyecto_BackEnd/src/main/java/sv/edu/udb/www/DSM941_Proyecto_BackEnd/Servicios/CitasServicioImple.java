@@ -15,13 +15,13 @@ public class CitasServicioImple implements CitasServicio {
 
     @Override
     public ArrayList<CitasModel> getAllCitas() {
-        return (ArrayList<CitasModel>) citaRepositorio.findAll();
+        return (ArrayList<CitasModel>) citaRepositorio.findAllCitas();
     }
 
 
     @Override
-    public ArrayList<CitasModel> findAllCitasByDoctor(Long id) {
-        return  citaRepositorio.findAllCitasBy_Doctor(id);
+    public ArrayList<CitasModel> findAllCitasByDoctor(Long id,Long idE) {
+        return  citaRepositorio.findAllCitasBy_Doctor(id,idE);
     }
 
     @Override

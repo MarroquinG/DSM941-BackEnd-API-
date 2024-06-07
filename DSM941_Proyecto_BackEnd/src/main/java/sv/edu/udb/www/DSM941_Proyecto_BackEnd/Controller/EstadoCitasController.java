@@ -15,6 +15,7 @@ public class EstadoCitasController {
     @Autowired
     EstadoCitaServicio estadoCitaServicio;
 
+    /**MOSTRAR CITAS ACTIVAS**/
     @GetMapping("/All")
     public ArrayList<EstadoCitasModel> getAllEstadoCita(){
         return estadoCitaServicio.getAllEstadoCita();
@@ -29,8 +30,6 @@ public class EstadoCitasController {
     public EstadoCitasModel GuardarEstadoCita(@RequestBody EstadoCitasModel a){
         return estadoCitaServicio.GuardarEstadoCita(a);
     }
-
-
 
     @PutMapping("/Update/{id}")
     public ResponseEntity<EstadoCitasModel> actualizarEstadoCita(@PathVariable("id") Long id, @RequestBody EstadoCitasModel estadoCita) {
