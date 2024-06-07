@@ -18,7 +18,7 @@ public class UsuarioServicioImple implements UsuarioServicio{
 
     @Override
     public ArrayList<UsuarioModel> getDoctoresById(Long tipoUsuarioId) {
-        return usuarioRepositorio.findByTipoUsuarioIdAndId(tipoUsuarioId);}
+        return usuarioRepositorio.find_Doctores(tipoUsuarioId);}
     @Override
     public Optional<UsuarioModel> getUsuarioById(Long id) {
         return usuarioRepositorio.findById(id);

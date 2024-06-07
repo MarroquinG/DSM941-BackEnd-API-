@@ -18,6 +18,22 @@ public class CitasServicioImple implements CitasServicio {
         return (ArrayList<CitasModel>) citaRepositorio.findAll();
     }
 
+
+    @Override
+    public ArrayList<CitasModel> findAllCitasByDoctor(Long id) {
+        return  citaRepositorio.findAllCitasBy_Doctor(id);
+    }
+
+    @Override
+    public ArrayList<CitasModel> findAllCitasByDoctor_Pendientes(Long id) {
+        return citaRepositorio.findAllCitasBy_DoctorPendientes(id);
+    }
+
+    @Override
+    public ArrayList<CitasModel> findAllCitasByDoctor_Finalizado(Long id) {
+        return citaRepositorio.findAllCitasBy_DoctorFinalizados(id);
+    }
+
     @Override
     public Optional<CitasModel> getCitaById(Long id) {
         return citaRepositorio.findById(id);
@@ -59,4 +75,6 @@ public class CitasServicioImple implements CitasServicio {
             return false;
         }
     }
+
+
 }

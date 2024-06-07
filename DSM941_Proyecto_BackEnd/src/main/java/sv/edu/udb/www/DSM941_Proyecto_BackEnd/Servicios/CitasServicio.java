@@ -12,4 +12,12 @@ public interface CitasServicio {
     CitasModel guardarCita(CitasModel cita);
     CitasModel actualizarCita(Long id, CitasModel cita);
     boolean desactivarCita(Long id);
+
+    ArrayList<CitasModel> findAllCitasByDoctor(Long id);
+
+    ArrayList<CitasModel> findAllCitasByDoctor_Pendientes(Long id);
+
+    ArrayList<CitasModel> findAllCitasByDoctor_Finalizado(Long id);
+
+
 }
