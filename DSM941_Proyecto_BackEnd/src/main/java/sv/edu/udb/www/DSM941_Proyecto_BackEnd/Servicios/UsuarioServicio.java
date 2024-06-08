@@ -9,6 +9,7 @@ public interface UsuarioServicio {
     ArrayList<UsuarioModel> getAllUsuarios();
     ArrayList<UsuarioModel> getDoctoresById(Long tipoUsuarioId);
     Optional<UsuarioModel> getUsuarioByCorreo(String correo,String Contra);
+    Optional<UsuarioModel> getByCorreo(String correo);
     Optional<UsuarioModel> getUsuarioById(Long id);
     UsuarioModel guardarUsuario(UsuarioModel usuario);
     UsuarioModel actualizarUsuario(Long id, UsuarioModel usuario);

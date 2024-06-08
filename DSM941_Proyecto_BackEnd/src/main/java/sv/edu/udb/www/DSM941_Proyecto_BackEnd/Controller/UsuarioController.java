@@ -30,9 +30,17 @@ public class UsuarioController {
         return new ResponseEntity<>(doctores, HttpStatus.OK);
     }
     /**Verificar Login**/
-    @GetMapping("/FindByCorreo/{correo}/{contra}")
+    @GetMapping("/FindByCorreoAndPass/{correo}/{contra}")
     public ResponseEntity<UsuarioModel> getUsuarioByCorreo(@PathVariable("correo") String correo,@PathVariable("contra") String contra) {
         Optional<UsuarioModel> usuarioOptional = usuarioServicio.getUsuarioByCorreo(correo,contra);
+        return usuarioOptional.map(usuario -> new ResponseEntity<>(usuario, HttpStatus.OK))
+                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    // Verificar correo
+    @GetMapping("/FindByCorreo/{correo}")
+    public ResponseEntity<UsuarioModel> getByCorreo(@PathVariable("correo") String correo) {
+        Optional<UsuarioModel> usuarioOptional = usuarioServicio.getByCorreo(correo);
         return usuarioOptional.map(usuario -> new ResponseEntity<>(usuario, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }

@@ -30,6 +30,11 @@ public class UsuarioServicioImple implements UsuarioServicio{
     }
 
     @Override
+    public Optional<UsuarioModel> getByCorreo(String correo) {
+        return usuarioRepositorio.findByCorreo(correo);
+    }
+
+    @Override
     public UsuarioModel guardarUsuario(UsuarioModel usuario) {
         return usuarioRepositorio.save(usuario);
     }

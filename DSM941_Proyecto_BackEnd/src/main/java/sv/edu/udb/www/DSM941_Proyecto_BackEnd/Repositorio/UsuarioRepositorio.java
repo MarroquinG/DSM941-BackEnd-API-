@@ -21,5 +21,9 @@ public interface UsuarioRepositorio extends CrudRepository<UsuarioModel, Long> {
     /**Verificar Login**/
     @Query("SELECT u FROM UsuarioModel u WHERE u.Correo = :correo and u.Pass = :contra AND u.Estatus = 1")
     Optional<UsuarioModel> findByUsuarioByCorreo(String correo,String contra);
+
+    //Verificar correo
+    @Query("SELECT u FROM UsuarioModel u WHERE u.Correo = :correo AND u.Estatus = 1")
+    Optional<UsuarioModel> findByCorreo(String correo);
 }
 
